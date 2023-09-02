@@ -28,7 +28,7 @@ function Classes() {
 
 
   const fetchClasses = async () => {
-    const res = await axios.get("/classes/");
+    const res = await axios.get("api/classes/");
     setClasses(res.data);
   };
 
