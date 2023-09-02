@@ -24,14 +24,14 @@ function Rooms() {
 
   useEffect(() => {
     const fetchRooms = async () => {
-      const res = await axios.get("/rooms/");
+      const res = await axios.get("api/rooms/");
       setRooms(res.data);
     };
     fetchRooms();
   }, []);
 
   const postRoom = async () => {
-    const res = await axios.post("/rooms/", {
+    const res = await axios.post("api/rooms/", {
       roomName: newRoomNameRef.current.value,
       roomNumber: newRoomNumberRef.current.value,
       userId: user._id,
@@ -40,7 +40,7 @@ function Rooms() {
   };
 
   const putRoom = async () => {
-    const res = await axios.put(`/rooms/number/${putRoomNumberRef.current.value}`, {
+    const res = await axios.put(`api/rooms/number/${putRoomNumberRef.current.value}`, {
       status: putRoomStatusRef.current.value,
     });
     setRooms((prevRooms) =>
@@ -49,7 +49,7 @@ function Rooms() {
   };
 
   const deleteRoom = async () => {
-    const res = await axios.delete(`/rooms/number/${deleteRoomNumberRef.current.value}`, {
+    const res = await axios.delete(`api/rooms/number/${deleteRoomNumberRef.current.value}`, {
       data: { userId: user._id },
     });
     setRooms((prevRooms) => prevRooms.filter((room) => room.roomNumber !== res.data.roomNumber));

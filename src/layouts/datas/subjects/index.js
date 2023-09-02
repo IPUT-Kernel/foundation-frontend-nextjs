@@ -25,7 +25,7 @@ function Subjects() {
   const { user } = useContext(AuthContext);
 
   const fetchSubjects = async () => {
-    const res = await axios.get("/subjects/");
+    const res = await axios.get("api/subjects/");
     setSubjects(res.data);
   };
   useEffect(() => {
@@ -36,7 +36,7 @@ function Subjects() {
     
     const isrequire = newSubjectisRequireRef.current.value === "必須" ? true : false;
 
-    const res = await axios.post("/subjects/", {
+    const res = await axios.post("api/subjects/", {
       grade: newSubjectGradeRef.current.value,
       subjectName: newSubjectNameRef.current.value,
       count: newSubjectCountRef.current.value,
@@ -47,7 +47,7 @@ function Subjects() {
   };
 
   const putSubject = async () => {
-    const res = await axios.put(`/subjects/number/${putSubjectNumberRef.current.value}`, {
+    const res = await axios.put(`api/subjects/number/${putSubjectNumberRef.current.value}`, {
       status: putSubjectStatusRef.current.value,
     });
     setSubjects((prevSubjects) =>
@@ -56,7 +56,7 @@ function Subjects() {
   };
 
   const deleteSubject = async () => {
-    const res = await axios.delete(`/subjects/name/${deleteSubjectNameRef.current.value}`, {
+    const res = await axios.delete(`api/subjects/name/${deleteSubjectNameRef.current.value}`, {
       data: { userId: user._id },
     });
     fetchSubjects();

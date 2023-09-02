@@ -47,7 +47,7 @@ function Classes() {
   }, []);
 
   const postClass = async () => {
-    const res = await axios.post("/classes/", {
+    const res = await axios.post("api/classes/", {
       department: newClassDepartmentRef.current.value,
       course: newClassCourseRef.current.value,
       classGrade: newClassGradeRef.current.value,
@@ -57,14 +57,14 @@ function Classes() {
   };
 
   const putRoom = async () => {
-    const res = await axios.put(`/rooms/number/${putRoomNumberRef.current.value}`, {
+    const res = await axios.put(`api/rooms/number/${putRoomNumberRef.current.value}`, {
       status: putRoomStatusRef.current.value,
     });
     fetchClasses();
   };
 
   const deleteRoom = async () => {
-    const res = await axios.delete(`/classes/${deleteRoomNumberRef.current.value}`, {
+    const res = await axios.delete(`api/classes/${deleteRoomNumberRef.current.value}`, {
       data: { userId: user._id },
     });
     fetchClasses();
