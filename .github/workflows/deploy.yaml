@@ -24,4 +24,4 @@ jobs:
 
     - name: Deploy to server
       run: |
-        ssh bitcat@www.iput-kernel.com "cd /opt/iput-kernel/foundation-frontend && git pull origin main && yarn && yarn build"
+        ssh bitcat@www.iput-kernel.com "cd /opt/iput-kernel/foundation-frontend &&git stash &&git pull origin main && yarn && yarn build"
