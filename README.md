@@ -49,6 +49,6 @@ React.js Material UI
 Node.js Express MongoDB
 
 ### インフラ
-データベースサーバー以外はすべてDockerコンポーネントにし、管理者の自宅にあるサーバーにデプロイ
+Ubuntu Server 22.04
 データベースサーバーのみAWS Atlasで管理する
 
