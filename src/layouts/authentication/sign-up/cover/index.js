@@ -18,9 +18,11 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 import bgImage from "assets/images/bg-sign-up-cover.jpeg";
 
 function Cover() {
+  const [username, setRegisterUsername] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-  const [agreeToTerms, setAgreeToTerms] = useState(false); // 利用規約のステートを追加
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [agreeToTerms, setAgreeToTerms] = useState(false); 
  
   const validateEmail = (email) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -53,6 +55,11 @@ function Cover() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateUsername(username)) {
+      alert("ユーザー名は6文字以上で入力してください");
+      return;
+    }
   
     if (!validateEmail(registerEmail)) {
       alert("無効なメールアドレスです");
@@ -63,6 +70,11 @@ function Cover() {
       alert("パスワードを入力してください");
       return;
     }
+
+    if (!passwordsMatch()) {
+      alert("パスワードとパスワード確認が一致していません");
+      return;
+    }
   
     if (!agreeToTerms) {
       alert("利用規約に同意してください");
@@ -70,7 +82,7 @@ function Cover() {
     }
 
     // 実際にAPIにPOSTリクエストを送信する
-    registerCall({ email: registerEmail, password: registerPassword });
+    registerCall({ email: registerEmail, username: registerUsername, password: registerPassword });
   };
   
 
@@ -98,9 +110,18 @@ function Cover() {
         </MDBox>
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
+          <MDBox mb={2}>
+            <MDInput 
+              type="text"
+              label="Username"
+              variant="standard"
+              value={username}
+              onChange={(e) => setRegisterUsername(e.target.value)}
+              fullWidth />
+            </MDBox>
             <MDBox mb={2}>
               <MDInput type="email"
-               label="Email:tk*@tks.iput.ac.jp"
+               label="Email:********@tks.iput.ac.jp"
                 variant="standard"
                 value={registerEmail}
                 onChange={(e) => setRegisterEmail(e.target.value)}
@@ -115,6 +136,16 @@ function Cover() {
                 onChange={(e) => setRegisterPassword(e.target.value)}
                 fullWidth />
             </MDBox>
+            <MDBox mb={2}>
+              <MDInput 
+                type="password" 
+                label="Confirm Password" 
+                variant="standard" 
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+                fullWidth />
+            </MDBox>
+
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Checkbox 
                 checked={agreeToTerms}
