@@ -20,11 +20,59 @@ import bgImage from "assets/images/bg-sign-up-cover.jpeg";
 function Cover() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [agreeToTerms, setAgreeToTerms] = useState(false); // 利用規約のステートを追加
+ 
+  const validateEmail = (email) => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    const domainRegex = /@tks\.iput\.ac\.jp$/i;
+    return emailRegex.test(email) && domainRegex.test(email);
+  };
+
+  async function registerCall(credentials) {
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        // 登録が成功したら何かの処理を行う（例：ユーザーをログインページにリダイレクトさせるなど）
+      } else {
+        // エラーメッセージを表示するなど、エラーハンドリングの処理を行う
+        alert(data.message || "登録に失敗しました");
+      }
+    } catch (err) {
+      console.error("登録リクエスト中にエラーが発生しました:", err);
+    }
+  }
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    if (!validateEmail(registerEmail)) {
+      alert("無効なメールアドレスです");
+      return;
+    }
+  
+    if (!registerPassword) {
+      alert("パスワードを入力してください");
+      return;
+    }
+  
+    if (!agreeToTerms) {
+      alert("利用規約に同意してください");
+      return;
+    }
 
+    // 実際にAPIにPOSTリクエストを送信する
+    registerCall({ email: registerEmail, password: registerPassword });
   };
+  
 
   return (
     
@@ -68,7 +116,10 @@ function Cover() {
                 fullWidth />
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
-              <Checkbox />
+              <Checkbox 
+                checked={agreeToTerms}
+                onChange={() => setAgreeToTerms(!agreeToTerms)}
+              />
               
               <MDTypography
                 component="a"
