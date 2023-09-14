@@ -30,6 +30,14 @@ function Cover() {
     return emailRegex.test(email) && domainRegex.test(email);
   };
 
+  const validateUsername = (username) => {
+    return username.length >= 6;
+  };
+
+  const passwordsMatch = () => {
+    return registerPassword === passwordConfirmation;
+  };
+ 
   async function registerCall(credentials) {
     try {
       const response = await fetch("/api/auth/register", {
@@ -82,7 +90,7 @@ function Cover() {
     }
 
     // 実際にAPIにPOSTリクエストを送信する
-    registerCall({ email: registerEmail, username: registerUsername, password: registerPassword });
+    registerCall({ email: registerEmail, username: username, password: registerPassword });
   };
   
 
