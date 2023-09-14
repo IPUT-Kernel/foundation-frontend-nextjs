@@ -37,7 +37,7 @@ function Footer({ light }) {
           >
             &copy; {new Date().getFullYear()}, made with React
             by
-            <Link to="https://www.creative-tim.com/" target="_blank">
+            <Link href="https://www.instagram.com/bitcat32" target="_blank">
               <MDTypography variant="button" fontWeight="medium" color={light ? "white" : "dark"}>
                 &nbsp;bitcat&nbsp;
               </MDTypography>
@@ -63,7 +63,7 @@ function Footer({ light }) {
           >
             
             <MDBox component="li" px={2} lineHeight={1}>
-              <Link to="https://github.com/IPUT-Kernel" target="_blank">
+              <Link href="https://github.com/IPUT-Kernel" target="_blank">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
@@ -74,7 +74,7 @@ function Footer({ light }) {
               </Link>
             </MDBox>
             <MDBox component="li" px={2} lineHeight={1}>
-              <Link to="https://www.instagram.com/bitcat32" target="_blank">
+              <Link href="https://www.instagram.com/bitcat32" target="_blank">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
