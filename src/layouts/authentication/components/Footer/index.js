@@ -37,11 +37,11 @@ function Footer({ light }) {
           >
             &copy; {new Date().getFullYear()}, made with React
             by
-            <Link href="https://www.instagram.com/bitcat32" target="_blank">
+            <a href="https://www.instagram.com/bitcat32">
               <MDTypography variant="button" fontWeight="medium" color={light ? "white" : "dark"}>
                 &nbsp;bitcat&nbsp;
               </MDTypography>
-            </Link>
+            </a>
             for self-approval.
           </MDBox>
           <MDBox
@@ -63,7 +63,7 @@ function Footer({ light }) {
           >
             
             <MDBox component="li" px={2} lineHeight={1}>
-              <Link href="https://github.com/IPUT-Kernel" target="_blank">
+              <a href="https://github.com/IPUT-Kernel">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
@@ -71,25 +71,18 @@ function Footer({ light }) {
                 >
                   About Us
                 </MDTypography>
-              </Link>
+              </a>
             </MDBox>
-            <MDBox component="li"
-              action={{
-                type: "external",
-                route: "https://www.instagram.com/bitcat32",
-                color: "light",
-              }}
-              px={2}
-              lineHeight={1}>
-              
-              <MDTypography
-                variant="button"
-                fontWeight="regular"
-                color={light ? "white" : "dark"}
-              >
-                Blog
-              </MDTypography>
-            
+            <MDBox component="li" px={2} lineHeight={1}>
+              <a href="https://www.instagram.com/bitcat">
+                <MDTypography
+                  variant="button"
+                  fontWeight="regular"
+                  color={light ? "white" : "dark"}
+                >
+                  Blog
+                </MDTypography>
+              </a>
             </MDBox>
             <MDBox component="li" pl={2} lineHeight={1}>
               <Link to="/pages/help-page" target="_blank">
