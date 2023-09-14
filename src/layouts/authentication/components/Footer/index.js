@@ -63,18 +63,18 @@ function Footer({ light }) {
           >
             
             <MDBox component="li" px={2} lineHeight={1}>
-              <Link to="https://www.creative-tim.com/presentation" target="_blank">
+              <Link to="https://github.com/IPUT-Kernel" target="_blank">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
                   color={light ? "white" : "dark"}
                 >
-                  About Me
+                  About Us
                 </MDTypography>
               </Link>
             </MDBox>
             <MDBox component="li" px={2} lineHeight={1}>
-              <Link to="/pages/help-pege" target="_blank">
+              <Link to="https://www.instagram.com/bitcat32" target="_blank">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
