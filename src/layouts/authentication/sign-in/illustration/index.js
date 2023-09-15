@@ -105,7 +105,7 @@ function Illustration() {
       <MDBox component="form" role="form" onSubmit={handleSubmit}>
         <MDBox mb={2}>
           <MDInput type="username" 
-            label="username"
+            label="Username"
             fullWidth
             value={username}
             onChange={(e) => setRegisterUsername(e.target.value)}
@@ -113,7 +113,7 @@ function Illustration() {
         </MDBox>
         <MDBox mb={2}>
           <MDInput type="email" 
-            label="Email:********@tks.iput.ac.jp"
+            label="Email: ********@tks.iput.ac.jp"
             fullWidth
             value={registerEmail}
             onChange={(e) => setRegisterEmail(e.target.value)}
@@ -173,21 +173,21 @@ function Illustration() {
            fullWidth
            type="submit"
            >
-            sign in
+            登録
           </MDButton>
         </MDBox>
         <MDBox mt={3} textAlign="center">
           <MDTypography variant="button" color="text">
-            Don&apos;t have an account?{" "}
+            アカウントの認証終わった？{" "}
             <MDTypography
               component={Link}
-              to="/authentication/sign-up/cover"
+              to="/authentication/sign-up/illustration"
               variant="button"
               color="info"
               fontWeight="medium"
               textGradient
             >
-              Sign up
+              Login
             </MDTypography>
           </MDTypography>
         </MDBox>
