@@ -105,6 +105,7 @@ function Illustration() {
       <MDBox component="form" role="form" onSubmit={handleSubmit}>
         <MDBox mb={2}>
           <MDInput type="username" 
+            label="username"
             fullWidth
             value={username}
             onChange={(e) => setRegisterUsername(e.target.value)}
