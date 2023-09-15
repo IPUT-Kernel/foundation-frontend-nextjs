@@ -131,7 +131,7 @@ function Cover() {
             </MDBox>
             <MDBox mb={2}>
               <MDInput type="email"
-               label="Email:********@tks.iput.ac.jp"
+                label="Email:********@tks.iput.ac.jp"
                 variant="standard"
                 value={registerEmail}
                 onChange={(e) => setRegisterEmail(e.target.value)}
@@ -196,7 +196,7 @@ function Cover() {
                 アカウントをすでにお持ち?{" "}
                 <MDTypography
                   component={Link}
-                  to="/authentication/sign-in/cover"
+                  to="/authentication/sign-in/illustration"
                   variant="button"
                   color="info"
                   fontWeight="medium"
