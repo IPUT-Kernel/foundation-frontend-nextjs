@@ -11,7 +11,6 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 // Material Dashboard 2 PRO React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import PageLayout from "examples/LayoutContainers/PageLayout";
 
 // Material Dashboard 2 PRO React page layout routes
@@ -26,14 +25,6 @@ function IllustrationLayout({ header, title, description, illustration, children
 
   return (
     <PageLayout background="white">
-      <DefaultNavbar
-        routes={pageRoutes}
-        action={{
-          type: "external",
-          route: "https://creative-tim.com/product/material-dashboard-pro-react",
-          label: "buy now",
-        }}
-      />
       <Grid
         container
         sx={{
