@@ -6,7 +6,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 // @mui material components
-import Switch from "@mui/material/Switch";
+import Checkbox from "@mui/material/Checkbox";
 
 // Material Dashboard 2 PRO React components
 import MDBox from "components/MDBox";
