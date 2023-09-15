@@ -10,6 +10,8 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDInput from "components/MDInput";
 import MDButton from "components/MDButton";
+import MDAlert from "components/MDAlert";
+
 
 // Authentication layout components
 import CoverLayout from "layouts/authentication/components/CoverLayout";
