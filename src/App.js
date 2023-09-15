@@ -103,7 +103,7 @@ export default function App() {
       }
 
       if (route.route) {
-        return <Route exact path={route.route} element={user ? route.component : <Navigate to="/authenication/login" />} key={route.key} />;
+        return <Route exact path={route.route} element={user ? route.component : <Cover />} key={route.key} />;
       }
 
       return null;
@@ -158,7 +158,7 @@ export default function App() {
       )}
       {layout === "vr" && <Configurator />}
       <Routes>
-        <Route path="*" element={user ? <Navigate to="/dashboards" /> : <Navigate to="/authenication/login" />} />
+        <Route path="*" element={user ? <Navigate to="/dashboards" /> : <Cover />} />
         {getRoutes(routes)}
       </Routes>
     </ThemeProvider>
