@@ -139,12 +139,11 @@ function Illustration() {
             />
         </MDBox>
         <MDBox display="flex" alignItems="center" ml={-1}>
-          <Switch checked={rememberMe} onChange={handleSetRememberMe} />
+          <Switch checked={agreeToTerms} onChange={setAgreeToTerms} />
           <MDTypography
             variant="button"
             fontWeight="regular"
             color="text"
-            onClick={handleSetRememberMe}
             sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
           >
             &nbsp;&nbsp;Remember me
