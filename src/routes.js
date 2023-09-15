@@ -367,8 +367,6 @@ const routes = [
         component: <Subjects />,
       },
       {
-        name: "illust",
-        key: "illust",
         route: "/sign-up",
         component: <SingUpIllust />
       }
