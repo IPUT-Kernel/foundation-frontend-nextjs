@@ -21,28 +21,81 @@ import IllustrationLayout from "layouts/authentication/components/IllustrationLa
 import bgImage from "assets/images/illustrations/illustration-reset.jpg";
 
 function Illustration() {
-  const [rememberMe, setRememberMe] = useState(false);
-
-  const handleSetRememberMe = () => setRememberMe(!rememberMe);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
-
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post("/auth/login", {
-        email,
-        password,
-      });
-      console.log(response.data);
-      // ログインに成功した場合の処理
-    } catch (error) {
-      console.error(error);
-      // ログインに失敗した場合の処理
-    }
+  const [username, setRegisterUsername] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [agreeToTerms, setAgreeToTerms] = useState(false); 
+ 
+  const validateEmail = (email) => {
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    const domainRegex = /@tks\.iput\.ac\.jp$/i;
+    return emailRegex.test(email) && domainRegex.test(email);
   };
+
+  const validateUsername = (username) => {
+    return username.length >= 6;
+  };
+
+  const passwordsMatch = () => {
+    return registerPassword === passwordConfirmation;
+  };
+ 
+  async function registerCall(credentials) {
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        // 登録が成功したら何かの処理を行う（例：ユーザーをログインページにリダイレクトさせるなど）
+      } else {
+        // エラーメッセージを表示するなど、エラーハンドリングの処理を行う
+        alert(data.message || "登録に失敗しました");
+      }
+    } catch (err) {
+      console.error("登録リクエスト中にエラーが発生しました:", err);
+    }
+  }
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateUsername(username)) {
+      alert("ユーザー名は6文字以上で入力してください");
+      return;
+    }
+  
+    if (!validateEmail(registerEmail)) {
+      alert("無効なメールアドレスです");
+      return;
+    }
+  
+    if (!registerPassword) {
+      alert("パスワードを入力してください");
+      return;
+    }
+
+    if (!passwordsMatch()) {
+      alert("パスワードとパスワード確認が一致していません");
+      return;
+    }
+  
+    if (!agreeToTerms) {
+      alert("利用規約に同意してください");
+      return;
+    }
+
+    // 実際にAPIにPOSTリクエストを送信する
+    registerCall({ email: registerEmail, username: username, password: registerPassword });
+  };
+  
   return (
     <IllustrationLayout
       title="ログイン"
@@ -51,11 +104,18 @@ function Illustration() {
     >
       <MDBox component="form" role="form">
         <MDBox mb={2}>
-          <MDInput type="email" 
-            label="Email"
+          <MDInput type="username" 
             fullWidth
-            value={email}
-            onChange={handleEmailChange}
+            value={username}
+            onChange={(e) => setRegisterUsername(e.target.value)}
+            />
+        </MDBox>
+        <MDBox mb={2}>
+          <MDInput type="email" 
+            label="Email:********@tks.iput.ac.jp"
+            fullWidth
+            value={registerEmail}
+            onChange={(e) => setRegisterEmail(e.target.value)}
             />
         </MDBox>
         <MDBox mb={2}>
@@ -63,8 +123,18 @@ function Illustration() {
             type="password" 
             label="Password" 
             fullWidth
-            value={password}
-            onChange={handlePasswordChange}
+            value={registerPassword}
+            onChange={(e) => setRegisterPassword(e.target.value)}
+            
+            />
+        </MDBox>
+        <MDBox mb={2}>
+          <MDInput 
+            type="password" 
+            label="Confirm Password" 
+            fullWidth
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
             
             />
         </MDBox>
