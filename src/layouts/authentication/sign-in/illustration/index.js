@@ -138,15 +138,30 @@ function Illustration() {
             
             />
         </MDBox>
+
         <MDBox display="flex" alignItems="center" ml={-1}>
-          <Switch checked={agreeToTerms} onChange={setAgreeToTerms} />
+          <Checkbox 
+            checked={agreeToTerms}
+            onChange={() => setAgreeToTerms(!agreeToTerms)}
+          />
+          
+          <MDTypography
+            component="a"
+            href="#"
+            variant="button"
+            fontWeight="bold"
+            color="info"
+            textGradient="test"
+          >
+            利用規約
+          </MDTypography>
           <MDTypography
             variant="button"
             fontWeight="regular"
             color="text"
             sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
           >
-            &nbsp;&nbsp;Remember me
+            &nbsp;&nbsp;に同意します。&nbsp;
           </MDTypography>
         </MDBox>
         <MDBox mt={4} mb={1}>
