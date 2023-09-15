@@ -98,11 +98,11 @@ function Illustration() {
   
   return (
     <IllustrationLayout
-      title="ログイン"
+      title="アカウント作成"
       description="大学のメールアドレスが必要です。"
       illustration={bgImage}
     >
-      <MDBox component="form" role="form">
+      <MDBox component="form" role="form" onSubmit={handleSubmit}>
         <MDBox mb={2}>
           <MDInput type="username" 
             fullWidth
@@ -165,7 +165,13 @@ function Illustration() {
           </MDTypography>
         </MDBox>
         <MDBox mt={4} mb={1}>
-          <MDButton variant="gradient" color="info" size="large" fullWidth>
+          <MDButton 
+           variant="gradient" 
+           color="info" 
+           size="large" 
+           fullWidth
+           type="submit"
+           >
             sign in
           </MDButton>
         </MDBox>
