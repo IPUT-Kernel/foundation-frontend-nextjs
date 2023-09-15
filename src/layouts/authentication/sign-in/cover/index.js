@@ -12,6 +12,7 @@ import CoverLayout from "layouts/authentication/components/CoverLayout";
 import bgImage from "assets/images/bg-sign-in-cover.jpeg";
 import { loginCall } from "actionCalls";
 
+
 function Cover() {
   const [rememberMe, setRememberMe] = useState(false);
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
@@ -121,7 +122,7 @@ function Cover() {
                 アカウントをお持ちではない?{" "}
                 <MDTypography
                   component={Link}
-                  to="/authentication/sign-up/cover"
+                  to="/sign-up"
                   variant="button"
                   color="info"
                   fontWeight="medium"

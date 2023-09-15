@@ -1,4 +1,4 @@
-import React, {useState}from "react";
+import React, {useState} from "react";
 // react-router-dom components
 import { Link } from "react-router-dom";
 // @mui material components
@@ -131,7 +131,7 @@ function Cover() {
             </MDBox>
             <MDBox mb={2}>
               <MDInput type="email"
-                label="Email:********@tks.iput.ac.jp"
+                label="Email: ********@tks.iput.ac.jp"
                 variant="standard"
                 value={registerEmail}
                 onChange={(e) => setRegisterEmail(e.target.value)}
