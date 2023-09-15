@@ -42,6 +42,7 @@ import ProductPage from "layouts/ecommerce/products/product-page";
 import OrderList from "layouts/ecommerce/orders/order-list";
 import OrderDetails from "layouts/ecommerce/orders/order-details";
 import SignUpCover from "layouts/authentication/sign-up/cover";
+import Cover from "layouts/authentication/sign-in/cover";
 import SingUpIllust from "layouts/authentication/sign-in/illustration";
 import ResetCover from "layouts/authentication/reset-password/cover";
 import Rooms from "layouts/datas/rooms";
@@ -369,7 +370,11 @@ const routes = [
 
   },
   {
-    route: "/sign-up",
+    route: "/authenication/login",
+    component: <Cover />
+  },
+  {
+    route: "/authenication/sign-up",
     component: <SingUpIllust />
   }
 ];
