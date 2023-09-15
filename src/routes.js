@@ -62,7 +62,6 @@ import profilePicture from "assets/images/Lenna.png";
 
 
 const routes = [
-  
   {
     type: "collapse",
     name: "unknown",
@@ -366,13 +365,13 @@ const routes = [
         route: "/datas/subjects",
         component: <Subjects />,
       },
-      {
-        route: "/sign-up",
-        component: <SingUpIllust />
-      }
     ],
 
   },
+  {
+    route: "/sign-up",
+    component: <SingUpIllust />
+  }
 ];
 
 export default routes;
