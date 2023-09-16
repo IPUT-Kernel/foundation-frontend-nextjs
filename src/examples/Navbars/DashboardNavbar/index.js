@@ -128,11 +128,6 @@ function DashboardNavbar({ absolute, light, isMini }) {
           <MDBox sx={(theme) => navbarRow(theme, { isMini })}>
             
             <MDBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in/cover">
-                <IconButton sx={navbarIconButton} size="small" disableRipple>
-                  <Icon sx={iconsStyle}>account_circle</Icon>
-                </IconButton>
-              </Link>
               <IconButton
                 size="small"
                 disableRipple
