@@ -107,8 +107,6 @@ export default function App() {
       return null;
     });
 
-    
-
   return direction === "rtl" ? (
     <CacheProvider value={rtlCache}>
       <ThemeProvider theme={darkMode ? themeDarkRTL : themeRTL}>
@@ -156,7 +154,6 @@ export default function App() {
       {layout === "vr" && <Configurator />}
       <Routes>
         {getRoutes(routes)}
-        <Route path="/authenication/sign-up" element={<Navigate to="/authenication/sign-up" />} />
       </Routes>
     </ThemeProvider>
   );
