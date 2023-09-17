@@ -122,7 +122,7 @@ function Cover() {
                 アカウントをお持ちではない?{" "}
                 <MDTypography
                   component={Link}
-                  to="/sign-up"
+                  to="/authenication/sign-up"
                   variant="button"
                   color="info"
                   fontWeight="medium"
