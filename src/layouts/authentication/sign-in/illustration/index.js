@@ -181,7 +181,7 @@ function Illustration() {
             アカウントの認証終わった？{" "}
             <MDTypography
               component={Link}
-              to="/authentication/sign-up/cover"
+              to="/authentication/login"
               variant="button"
               color="info"
               fontWeight="medium"
