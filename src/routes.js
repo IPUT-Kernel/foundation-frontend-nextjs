@@ -369,14 +369,6 @@ const routes = [
     ],
 
   },
-  {
-    route: "/authenication/login",
-    component: <Cover />
-  },
-  {
-    route: "/authenication/sign-up",
-    component: <SingUpIllust />
-  }
 ];
 
 export default routes;

@@ -37,6 +37,8 @@ import brandDark from "assets/images/logo-ct-dark.png";
 import Cover from "layouts/authentication/sign-in/cover";
 import { AuthContext } from "states/AuthContext";
 
+import SingUpIllust from "layouts/authentication/sign-in/illustration";
+
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
   const {
@@ -155,10 +157,9 @@ export default function App() {
       )}
       {layout === "vr" && <Configurator />}
       <Routes>
-        
+        <Route path="/authenication/sign-up" element={<SingUpIllust />} />
         <Route path="*" element={user ? <Navigate to="/dashboards" /> : <Cover />} />
         {getRoutes(routes)}
-        <Route path="/authenication/sign-up" element={<Navigate to="/authenication/sign-up" />} />
       </Routes>
     </ThemeProvider>
   );
