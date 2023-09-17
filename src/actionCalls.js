@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const loginCall = async (userCreds, dispatch) => {
-    console.log("loginCall function called");  // このログを追加
     dispatch({ type: "LOGIN_START" });
     try {
         const res = await axios.post("/api/auth/login", userCreds);
