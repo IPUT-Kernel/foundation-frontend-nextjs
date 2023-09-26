@@ -184,7 +184,7 @@ function Analytics() {
             </Grid>
 
             <Grid item xs={12} lg={5} p={1}>
-              <ChatUI className='3年タイピング戦略コースB'/>
+              <ChatUI className='Coming soon...'/>
             </Grid>
 
 
