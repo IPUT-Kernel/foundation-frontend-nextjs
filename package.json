@@ -95,5 +95,5 @@
     "eslint-plugin-react-hooks": "4.3.0",
     "prettier": "2.5.1"
   },
-  "proxy": "https://www.iput-kernel.com"
+  "proxy": "http://localhost:4000"
 }
