@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
+import Autocomplete from "@mui/material/Autocomplete";
+
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-import DataTable from "examples/Tables/DataTable";
 import MDBox from "components/MDBox";
 import MDButton from "components/MDButton";
 import MDTypography from "components/MDTypography";
@@ -13,101 +14,61 @@ import axios from "axios";
 import { AuthContext } from "states/AuthContext";
 
 function Timetables() {
-  const [Timetables, setTimetables] = useState([]);
-  const putRoomNumberRef = useRef(null);
-  const putTimetablestatusRef = useRef(null);
-  const deleteRoomNumberRef = useRef(null);
-  const newRoomNameRef = useRef(null);
-  const newRoomNumberRef = useRef(null);
+  const { user , token } = useContext(AuthContext);
 
-  const { user } = useContext(AuthContext);
+  const [timetables, setTimetables] = useState([]);
+  const [rooms, setRooms] = useState([]);
+  const [subjects, setSubjects] = useState([]);
+
+  const inputRefs = Array(7).fill().map(() => Array(5).fill().map(() => useRef(null)));
+
+  const fetchTimetables = async () => {
+    const res = await axios.get("/v1/timetable/");
+    setTimetables(res.data);
+  };
+  const fetchRooms = async () => {
+    const res = await axios.get("/v1/rooms/");
+    setRooms(res.data); // ここを修正
+  };
+  const fetchSubjects = async () => {
+    const res = await axios.get("/v1/subjects/");
+    setSubjects(res.data); // ここを修正
+  };
 
   useEffect(() => {
-    const fetchTimetables = async () => {
-      const res = await axios.get("/api/timetables/");
-      setTimetables(res.data);
-    };
     fetchTimetables();
+    fetchRooms();
+    fetchSubjects();
   }, []);
-
-  const postRoom = async () => {
-    const res = await axios.post("/api/timetables/", {
-      roomName: newRoomNameRef.current.value,
-      roomNumber: newRoomNumberRef.current.value,
-      userId: user._id,
-    });
-    setTimetables((prevTimetables) => [...prevTimetables, res.data]);
-  };
-
-  const putRoom = async () => {
-    const res = await axios.put(`/api/timetables/number/${putRoomNumberRef.current.value}`, {
-      status: putTimetablestatusRef.current.value,
-    });
-    setTimetables((prevTimetables) =>
-      prevTimetables.map((room) => (room.roomNumber === res.data.roomNumber ? res.data : room))
-    );
-  };
-
-  const deleteRoom = async () => {
-    const res = await axios.delete(`/api/timetables/number/${deleteRoomNumberRef.current.value}`, {
-      data: { userId: user._id },
-    });
-    setTimetables((prevTimetables) => prevTimetables.filter((room) => room.roomNumber !== res.data.roomNumber));
-  };
-
-  const roomTableData = {
-    columns: [
-      { Header: "番号", accessor: "roomNumber", width: "20%" },
-      { Header: "教室名", accessor: "roomName", width: "45%" },
-      { Header: "ステータス", accessor: "status" },
-    ],
-    rows: Timetables,
-  };
 
   return (
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox pt={6}>
         <Grid container spacing={1}>
-          <Grid item xs={12} md={12} lg={8}>
-            <MDBox mb={3}>
-              <Card>
-                <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-                  <MDBox lineHeight={1}>
-                    <MDTypography variant="h5" fontWeight="medium">
-                      教室一覧
-                    </MDTypography>
-                    <MDTypography variant="button" color="text">
-                      未ソートの場合は、生成順で表示されます。
-                    </MDTypography>
-                  </MDBox>
-                  <MDButton variant="contained" color="info">
-                    教室を追加
-                  </MDButton>
-                </MDBox>
-                <DataTable table={roomTableData} canSearch />
-              </Card>
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={4}>
+          <Grid item xs={12} md={6} lg={12/5}>
             <MDBox pb={1}>
               <Card>
-                <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3} lineHeight={1}>
-                  <MDBox>
-                    <MDTypography variant="h5" fontWeight="medium">
-                      ステータス変更
-                    </MDTypography>
+                <MDBox px={1} pt={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={subjects}
+                      getOptionLabel={(option) => option.subjectName}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="講義名" fullWidth  />
+                      )}
+                    />
                   </MDBox>
-                  <MDButton variant="contained" color="info" onClick={putRoom}>
-                    PUT
-                  </MDButton>
                 </MDBox>
-                <MDBox p={2} display="flex" justifyContent="space-between" alignItems="center">
-                  <MDBox flex="1 1 auto" mr={1} flexBasis="50%">
-                    <MDInput placeholder="300" inputRef={putRoomNumberRef} fullWidth />
-                  </MDBox>
-                  <MDBox flex="1 1 auto" mr={1} flexBasis="50%">
-                    <MDInput placeholder="自習室" inputRef={putTimetablestatusRef} fullWidth />
+                <MDBox px={1} py={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={rooms}
+                      getOptionLabel={(option) => option.roomNumber.toString()}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="教室" fullWidth  />
+                      )}
+                    />
                   </MDBox>
                 </MDBox>
               </Card>
@@ -115,23 +76,26 @@ function Timetables() {
 
             <MDBox pb={1}>
               <Card>
-                <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3} lineHeight={1}>
-                  <MDBox>
-                    <MDTypography variant="h5" fontWeight="medium">
-                      教室追加
-                    </MDTypography>
+                <MDBox px={1} pt={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={subjects}
+                      getOptionLabel={(option) => option.subjectName}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="講義名" fullWidth  />
+                      )}
+                    />
                   </MDBox>
-                  <MDButton variant="contained" color="warning" onClick={postRoom}>
-                    POST
-                  </MDButton>
                 </MDBox>
-
-                <MDBox p={2} display="flex" justifyContent="space-between" alignItems="center">
-                  <MDBox flex="1 1 auto" mr={1} flexBasis="30%">
-                    <MDInput placeholder="番号" fullWidth inputRef={newRoomNumberRef} />
-                  </MDBox>
-                  <MDBox flex="1 1 auto" mr={1} flexBasis="70%">
-                    <MDInput placeholder="教室名" fullWidth inputRef={newRoomNameRef} />
+                <MDBox px={1} py={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={rooms}
+                      getOptionLabel={(option) => option.roomNumber.toString()}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="教室" fullWidth  />
+                      )}
+                    />
                   </MDBox>
                 </MDBox>
               </Card>
@@ -139,20 +103,135 @@ function Timetables() {
 
             <MDBox pb={1}>
               <Card>
-                <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3} lineHeight={1}>
-                  <MDBox>
-                    <MDTypography variant="h5" fontWeight="medium">
-                      教室削除
-                    </MDTypography>
+                <MDBox px={1} pt={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={subjects}
+                      getOptionLabel={(option) => option.subjectName}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="講義名" fullWidth  />
+                      )}
+                    />
                   </MDBox>
-                  <MDButton variant="contained" color="error" onClick={deleteRoom}>
-                    DELETE
-                  </MDButton>
                 </MDBox>
+                <MDBox px={1} py={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={rooms}
+                      getOptionLabel={(option) => option.roomNumber.toString()}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="教室" fullWidth  />
+                      )}
+                    />
+                  </MDBox>
+                </MDBox>
+              </Card>
+            </MDBox>
 
-                <MDBox p={2} display="flex" justifyContent="space-between" alignItems="center">
-                  <MDBox flex="1 1 auto" mr={1}>
-                    <MDInput placeholder="番号" fullWidth inputRef={deleteRoomNumberRef} />
+            <MDBox pb={1}>
+              <Card>
+                <MDBox px={1} pt={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={subjects}
+                      getOptionLabel={(option) => option.subjectName}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="講義名" fullWidth  />
+                      )}
+                    />
+                  </MDBox>
+                </MDBox>
+                <MDBox px={1} py={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={rooms}
+                      getOptionLabel={(option) => option.roomNumber.toString()}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="教室" fullWidth  />
+                      )}
+                    />
+                  </MDBox>
+                </MDBox>
+              </Card>
+            </MDBox>
+
+            <MDBox pb={1}>
+              <Card>
+                <MDBox px={1} pt={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={subjects}
+                      getOptionLabel={(option) => option.subjectName}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="講義名" fullWidth  />
+                      )}
+                    />
+                  </MDBox>
+                </MDBox>
+                <MDBox px={1} py={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={rooms}
+                      getOptionLabel={(option) => option.roomNumber.toString()}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="教室" fullWidth  />
+                      )}
+                    />
+                  </MDBox>
+                </MDBox>
+              </Card>
+            </MDBox>
+
+
+            <MDBox pb={1}>
+              <Card>
+                <MDBox px={1} pt={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={subjects}
+                      getOptionLabel={(option) => option.subjectName}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="講義名" fullWidth  />
+                      )}
+                    />
+                  </MDBox>
+                </MDBox>
+                <MDBox px={1} py={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={rooms}
+                      getOptionLabel={(option) => option.roomNumber.toString()}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="教室" fullWidth  />
+                      )}
+                    />
+                  </MDBox>
+                </MDBox>
+              </Card>
+            </MDBox>
+
+            <MDBox pb={1}>
+              <Card>
+                <MDBox px={1} pt={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={subjects}
+                      getOptionLabel={(option) => option.subjectName}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="講義名" fullWidth  />
+                      )}
+                    />
+                  </MDBox>
+                </MDBox>
+                <MDBox px={1} py={1} display="flex" justifyContent="space-between" alignItems="center">
+                  <MDBox flex="1 1 auto" >
+                    <Autocomplete
+                      options={rooms}
+                      getOptionLabel={(option) => option.roomNumber.toString()}
+                      renderInput={(params) => (
+                        <MDInput {...params} placeholder="教室" fullWidth  />
+                      )}
+                    />
                   </MDBox>
                 </MDBox>
               </Card>

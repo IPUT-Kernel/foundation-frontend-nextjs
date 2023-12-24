@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 // @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
+import Tooltip from '@mui/material/Tooltip';
 
 // Material Dashboard 2 PRO React components
 import MDBox from "components/MDBox";
@@ -49,21 +50,24 @@ function DefaultStatisticsCard({ period, title, info,time }) {
                 </MDTypography>
               </MDBox>
               <MDBox display="flex" justifyContent="flex-end" position="relative">
-                <MDTypography 
-                  variant="button" 
-                  fontWeight="bold" 
-                  color={info.color}
-                  style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', width: 'fit-content' }}
-                >
-                  {info.value}&nbsp;
-                </MDTypography>
-                <MDTypography
-                  variant="button"
-                  fontWeight="regular"
-                  color={darkMode ? "text" : "secondary"}
-                >
-                  {info.label}
-                </MDTypography>
+                  <Tooltip title={info.authenticity} placement="left">
+                  <MDTypography 
+                    variant="button" 
+                    fontWeight="bold" 
+                    color={info.color}
+                    style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', width: 'fit-content' }}
+                  >
+                    {info.value}&nbsp;
+                  </MDTypography>
+                  </Tooltip>
+                  <MDTypography
+                    variant="button"
+                    fontWeight="regular"
+                    color={darkMode ? "text" : "secondary"}
+                  >
+                    {info.label}
+                  </MDTypography>
+                
               </MDBox>
 
             </MDBox>

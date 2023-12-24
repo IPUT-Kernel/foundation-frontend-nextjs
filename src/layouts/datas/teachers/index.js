@@ -29,7 +29,7 @@ function Teachers() {
 
 
   const fetchTeachers = async () => {
-    const res = await axios.get("/api/teachers/");
+    const res = await axios.get("/v1/teachers/");
     setTeachers(res.data);
   };
   
@@ -41,19 +41,18 @@ function Teachers() {
       course: newCourseRef.current.value,
       userId: user._id,
     };
-    const res = await axios.post("/api/teachers/",newTeacher);
+    const res = await axios.post("/v1/teachers/",newTeacher);
     console.log(res.data);
     fetchTeachers();
   };
 
   // axiosでdeleteする関数を作成
   const deleteTeacher = async () => {
-    const res = await axios.delete("/api/teachers/"+deleteTeacherIdRef.current.value, {data:{userId:user._id}});
+    const res = await axios.delete("/v1/teachers/"+deleteTeacherIdRef.current.value, {data:{userId:user._id}});
     fetchTeachers();
   };
 
   useEffect (() => {
-    
     fetchTeachers();
   }, []);
   //res.dataのfirstNameとlastNameを結合してnameとして表示する

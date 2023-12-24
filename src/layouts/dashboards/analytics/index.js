@@ -2,7 +2,6 @@
 import Grid from "@mui/material/Grid";
 import Tooltip from "@mui/material/Tooltip";
 import Icon from "@mui/material/Icon";
-
 // Material Dashboard 2 PRO React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
@@ -109,9 +108,9 @@ function Analytics() {
         <MDBox mt={1}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={10} lg={5}  >
-              <Card style={cardStyle}>
-                <MDBox p={1}>
-                  <MDBox mt={3} mb={1} >
+              
+                <MDBox px={1}>
+                  <MDBox mb={1} >
                     <DefaultStatisticsCard
                     period="1限"
                     time="9:15 - 10:45"
@@ -120,7 +119,9 @@ function Analytics() {
                       color: "info",
                       value: "342",
                       label: "上條 浩一 教授",
+                      authenticity: "使用確率: 90%",
                     }}
+                    
                     
                     />
                   </MDBox>
@@ -162,7 +163,7 @@ function Analytics() {
                     />
                   </MDBox>
                 </MDBox>
-              </Card>
+              
             </Grid>
 
 
