@@ -42,7 +42,7 @@ function Cover() {
  
   async function registerCall(credentials) {
     try {
-      const response = await fetch("/api/auth/register", {
+      const response = await fetch("/v1/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

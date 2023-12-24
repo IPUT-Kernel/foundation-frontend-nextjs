@@ -27,14 +27,14 @@ function Timelines() {
 
   useEffect(() => {
     const fetchTimelines = async () => {
-      const res = await axios.get("/api/timelines/");
+      const res = await axios.get("/v1/timelines/");
       setTimelines(res.data);
     };
     fetchTimelines();
   }, []);
 
   const postTimeline = async () => {
-    const res = await axios.post("/api/timelines/", {
+    const res = await axios.post("/v1/timelines/", {
       roomName: newTimelineNameRef.current.value,
       roomNumber: newTimelineNumberRef.current.value,
       userId: user._id,
@@ -43,7 +43,7 @@ function Timelines() {
   };
 
   const putTimeline = async () => {
-    const res = await axios.put(`/api/timelines/number/${putTimelineNumberRef.current.value}`, {
+    const res = await axios.put(`/v1/timelines/number/${putTimelineNumberRef.current.value}`, {
       status: putTimelineStatusRef.current.value,
     });
     setTimelines((prevTimelines) =>
@@ -52,7 +52,7 @@ function Timelines() {
   };
 
   const deleteTimeline = async () => {
-    const res = await axios.delete(`/api/timelines/number/${deleteTimelineNumberRef.current.value}`, {
+    const res = await axios.delete(`/v1/timelines/number/${deleteTimelineNumberRef.current.value}`, {
       data: { userId: user._id },
     });
     setTimelines((prevTimelines) => prevTimelines.filter((room) => room.roomNumber !== res.data.roomNumber));
