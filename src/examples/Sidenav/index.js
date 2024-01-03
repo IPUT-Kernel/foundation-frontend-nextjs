@@ -155,7 +155,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       try{
         if (key === "username") {
           // "username"の場合はnameを変更する
-          name = user.username;
+          name = user.userName;
         }
       }catch(e){
         console.log(e);

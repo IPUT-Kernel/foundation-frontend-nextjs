@@ -6,7 +6,6 @@ import Icon from "@mui/material/Icon";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import DefaultStatisticsCard from "examples/Cards/StatisticsCards/DefaultStatisticsCard";
-import Card from "@mui/material/Card";
 // Material Dashboard 2 PRO React examples
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
@@ -17,6 +16,7 @@ import EventCalendar from "examples/Calendar";
 import NextEvents from "layouts/applications/calendar/components/NextEvents";
 import ChatUI from "layouts/applications/chat";
 import { useMemo } from "react";
+import { cardData } from "./data/reportsBarChartData";
 
 function Analytics() {
   const calendarEventsData = [
@@ -109,60 +109,18 @@ function Analytics() {
           <Grid container spacing={3}>
             <Grid item xs={12} md={10} lg={5}  >
               
-                <MDBox px={1}>
-                  <MDBox mb={1} >
-                    <DefaultStatisticsCard
-                    period="1限"
-                    time="9:15 - 10:45"
-                    title="画像・音声認識"
-                    info={{
-                      color: "info",
-                      value: "342",
-                      label: "上條 浩一 教授",
-                      authenticity: "使用確率: 90%",
-                    }}
-                    
-                    
-                    />
-                  </MDBox>
-                  <MDBox mb={1} >
-                    <DefaultStatisticsCard
-                    period="2限"
-                    time="10:55 - 12:25"
-                    title="リバースエンジニアリング概論"
-                    info={{
-                      color: "info",
-                      value: "342",
-                      label: "上條 浩一 教授",
-                    }}
-                    
-                    />
-                  </MDBox>
-                  <MDBox mb={1} >
-                    <DefaultStatisticsCard
-                    period="3限"
-                    time="13:10 - 14:40"
-                    title="画像・音声認識"
-                    info={{
-                      color: "info",
-                      value: "342",
-                      label: "上條 浩一 教授",
-                    }}
-                    />
-                  </MDBox>
-                  <MDBox mb={1} >
-                    <DefaultStatisticsCard
-                    period="4限"
-                    time="14:50 - 16:40"
-                    title="画像・音声認識"
-                    info={{
-                      color: "info",
-                      value: "342",
-                      label: "上條 浩一 教授",
-                    }}
-                    />
-                  </MDBox>
+            <MDBox px={1}>
+              {cardData.map((data, index) => (
+                <MDBox mb={1} key={index}>
+                  <DefaultStatisticsCard
+                    period={data.period}
+                    time={data.time}
+                    title={data.title}
+                    info={data.info}
+                  />
                 </MDBox>
+              ))}
+            </MDBox>
               
             </Grid>
 
@@ -191,7 +149,7 @@ function Analytics() {
 
           </Grid>
           <Grid container spacing={3} mt={1}>
-            <Grid item xs={12} lg={7}>
+            <Grid item xs={12} lg={12}>
               {useMemo(
                 () => (
                   <EventCalendar

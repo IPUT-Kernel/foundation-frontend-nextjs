@@ -24,6 +24,7 @@ import ResetCover from "layouts/authentication/reset-password/cover";
 import Rooms from "layouts/datas/rooms";
 import Teachers from "layouts/datas/teachers";
 import Classes from "layouts/datas/classes";
+import ExtraClasses from "layouts/datas/extraClasses";
 import Subjects from "layouts/datas/subjects";
 import Timetables from "layouts/datas/timetables";
 import Air from "layouts/datas/air";
@@ -317,6 +318,12 @@ const routes = [
         key: "classes",
         route: "/datas/classes",
         component: <Classes />,
+      },
+      {
+        name: "ExtraClasses",
+        key: "extraclasses",
+        route: "/datas/extraclasses",
+        component: <ExtraClasses />,
       },
       {
         name: "Subjects",

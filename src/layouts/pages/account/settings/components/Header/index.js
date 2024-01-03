@@ -28,7 +28,7 @@ function Header() {
           <Grid item>
             <MDBox height="100%" mt={0.5} lineHeight={1}>
               <MDTypography variant="h5" fontWeight="medium">
-                {user.username}
+                {user.userName}
               </MDTypography>
               <MDTypography variant="button" color="text" fontWeight="medium">
                 CEO / Co-Founder
@@ -43,7 +43,7 @@ function Header() {
               lineHeight={1}
             >
               <MDTypography variant="caption" fontWeight="regular">
-                Switch to {visible ? "invisible" : "visible"}
+                {visible ? "匿名" : "実名"}にする
               </MDTypography>
               <MDBox ml={1}>
                 <Switch checked={visible} onChange={handleSetVisible} />

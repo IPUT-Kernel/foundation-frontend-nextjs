@@ -9,6 +9,7 @@ import BaseLayout from "layouts/pages/account/components/BaseLayout";
 import Sidenav from "layouts/pages/account/settings/components/Sidenav";
 import Header from "layouts/pages/account/settings/components/Header";
 import BasicInfo from "layouts/pages/account/settings/components/BasicInfo";
+import ClassInfo from "layouts/pages/account/settings/components/ClassInfo";
 import ChangePassword from "layouts/pages/account/settings/components/ChangePassword";
 import Authentication from "layouts/pages/account/settings/components/Authentication";
 import Accounts from "layouts/pages/account/settings/components/Accounts";
@@ -32,6 +33,9 @@ function Settings() {
                 </Grid>
                 <Grid item xs={12}>
                   <BasicInfo />
+                </Grid>
+                <Grid item xs={12}>
+                  <ClassInfo />
                 </Grid>
                 <Grid item xs={12}>
                   <ChangePassword />

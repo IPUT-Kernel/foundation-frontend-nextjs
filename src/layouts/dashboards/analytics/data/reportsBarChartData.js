@@ -1,21 +1,46 @@
-/**
-=========================================================
-* Material Dashboard 2 PRO React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-pro-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-const reportsBarChartData = {
-  labels: ["M", "T", "W", "T", "F", "S", "S"],
-  datasets: { label: "Sales", data: [50, 20, 10, 22, 50, 10, 40] },
-};
-
-export default reportsBarChartData;
+export const cardData = [
+  {
+    period: "1限",
+    time: "9:15 - 10:45",
+    title: "画像・音声認識",
+    info: {
+      color: "info",
+      value: "342",
+      label: "上條 浩一 教授",
+      authenticity: "使用確率: ?%",
+    },
+  },
+  {
+    period: "2限",
+    time: "10:55 - 12:25",
+    title: "リバースエンジニアリング概論",
+    info: {
+      color: "info",
+      value: "342",
+      label: "上條 浩一 教授",
+      authenticity: "使用確率: ?%",
+    },
+  },
+  {
+    period: "3限",
+    time: "13:10 - 14:40",
+    title: "画像・音声認識",
+    info: {
+      color: "info",
+      value: "342",
+      label: "上條 浩一 教授",
+      authenticity: "使用確率: ?%",
+    },
+  },
+  {
+    period: "4限",
+    time: "14:50 - 16:40",
+    title: "画像・音声認識",
+    info: {
+      color: "info",
+      value: "342",
+      label: "上條 浩一 教授",
+      authenticity: "使用確率: ?%"
+    },
+  },
+];
