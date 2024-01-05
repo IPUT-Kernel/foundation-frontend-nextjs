@@ -3,6 +3,8 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Autocomplete from "@mui/material/Autocomplete";
 
+import {  Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button ,Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material';
+
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
@@ -13,13 +15,14 @@ import MDInput from "components/MDInput";
 import axios from "axios";
 import { AuthContext } from "states/AuthContext";
 
-const daysOfWeek = ["月曜日", "火曜日", "水曜日", "木曜日", "金曜日"];
+const daysOfWeek = ["月", "火", "水", "木", "金"];
+
 
 function Timetables() {
   const { user , token } = useContext(AuthContext);
 
   const [timetable, setTimetable] = useState(
-    Array(5).fill().map(() => Array(7).fill({ subject: null, room: null }))
+    Array(7).fill().map(() => Array(5).fill({ subject: null, room: null }))
   );
 
   const updateTimetable = (row, column, field, newValue) => {
@@ -36,15 +39,15 @@ function Timetables() {
 
   const fetchRooms = async () => {
     const res = await axios.get("/v1/rooms/");
-    setRooms(res.data); // ここを修正
+    setRooms(res.data);
   };
   const fetchSubjects = async () => {
     const res = await axios.get("/v1/subjects/");
-    setSubjects(res.data); // ここを修正
+    setSubjects(res.data); 
   };
   const fetchClasses = async () => {
     const res = await axios.get("/v1/classes/");
-    setClasses(res.data); // ここを修正
+    setClasses(res.data);
   };
 
   useEffect(() => {
@@ -58,65 +61,37 @@ function Timetables() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <MDBox pt={6}>
-        <Grid container spacing={1}>
-          <Grid item lg={12}>
-            <Card>
-              
-                <MDBox px={1} py={1} display="flex" justifyContent="space-between" alignItems="center">
-                  <MDBox flex="1 1 auto" >
-                    <Autocomplete
-                      options={classes}
-                      getOptionLabel={(option) => option._id}
-                      renderInput={(params) => (
-                        <MDInput {...params} placeholder="クラス" fullWidth  />
-                      )}
-                    />
-                  </MDBox>
-                </MDBox>
-            
-            </Card>
-          </Grid>
-          {Array(5).fill().map((_, rowIndex) => (
-            <Grid item lg={12/5}>
-              {Array(7).fill().map((_, columnIndex) => (
-                <MDBox pb={1}>
-                  <Card>
-                    <MDBox px={1} pt={1} display="flex" justifyContent="space-between" alignItems="center">
-                      <MDTypography variant="h6" px={1} py={1} >{columnIndex + 1}限</MDTypography>
-                      <MDTypography variant="h6" px={1} py={1} >{daysOfWeek[rowIndex]}</MDTypography>
-                    </MDBox>
-                    <MDBox px={1} pt={1} display="flex" justifyContent="space-between" alignItems="center">
-                      <MDBox flex="1 1 auto" >
-                        <Autocomplete
-                          options={subjects}
-                          getOptionLabel={(option) => option.subjectName}
-                          onChange={(event, newValue) => updateTimetable(rowIndex, columnIndex, 'subject', newValue._id)}
-                          renderInput={(params) => (
-                            <MDInput {...params} placeholder="講義名" fullWidth  />
-                          )}
-                        />
-                      </MDBox>
-                    </MDBox>
-                    <MDBox px={1} py={1} display="flex" justifyContent="space-between" alignItems="center">
-                      <MDBox flex="1 1 auto" >
-                        <Autocomplete
-                          options={rooms}
-                          getOptionLabel={(option) => option.roomNumber.toString()}
-                          onChange={(event, newValue) => updateTimetable(rowIndex, columnIndex, 'room', newValue._id)}
-                          renderInput={(params) => (
-                            <MDInput {...params} placeholder="教室" fullWidth  />
-                          )}
-                        />
-                      </MDBox>
-                    </MDBox>
-                  </Card>
-                </MDBox>
+      
+        <TableContainer component={Paper}>
+        <MDBox p={3}>
+          <Table sx={{ minWidth: 650 }} aria-label="timetable">
+            <TableBody>
+              <TableRow sx={{height:10}}>
+                <TableCell align="center" sx={{ border: 1 , width:50 ,margin:0 ,padding:0}} >時限</TableCell>
+                {daysOfWeek.map((day, index) => (
+                  <TableCell key={index} align="center" sx={{ border: 1 ,margin:0 ,padding:0}}>
+                    {day}
+                  </TableCell>
+                ))}
+              </TableRow>
+              {timetable.map((row, rowIndex) => (
+                <TableRow key={rowIndex}>
+                  <TableCell align="center" sx={{ border: 1 , width:50}}>
+                    {rowIndex + 1}
+                  </TableCell>
+                  {row.map((cell, columnIndex) => (
+                    <TableCell key={columnIndex} align="center" sx={{ border: 1 }}>
+                      {cell.subject && <div>{cell.subject.subjectName}</div>}
+                      {cell.room && <div>{cell.room.roomNumber}</div>}
+                    </TableCell>
+                  ))}
+                </TableRow>
               ))}
-            </Grid>
-          ))}
-          </Grid>
-      </MDBox>
+            </TableBody>
+          </Table>
+          </MDBox>
+        </TableContainer>
+
       <Footer />
     </DashboardLayout>
   );
