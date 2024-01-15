@@ -1,99 +1,67 @@
 {
-  "name": "iput-kernel",
-  "version": "2.1.0",
+  "name": "dashboi",
+  "version": "0.1.0",
   "private": true,
-  "author": "Creative Tim",
-  "license": "See license in https://www.creative-tim.com/license",
-  "description": "React version of Material Dashboard 2 PRO by Creative Tim",
-  "bugs": {
-    "url": "https://github.com/creativetimofficial/ct-material-dashboard-pro-react/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/creativetimofficial/ct-material-dashboard-pro-react.git"
-  },
-  "engines": {
-    "node": "14 || 15 || 16 || 18",
-    "npm": ">=6"
-  },
-  "dependencies": {
-    "@asseinfo/react-kanban": "2.2.0",
-    "@emotion/cache": "11.7.1",
-    "@emotion/react": "11.7.1",
-    "@emotion/styled": "11.6.0",
-    "@fullcalendar/daygrid": "5.10.0",
-    "@fullcalendar/interaction": "5.10.0",
-    "@fullcalendar/react": "5.10.0",
-    "@fullcalendar/timegrid": "5.10.0",
-    "@mui/icons-material": "5.4.1",
-    "@mui/material": "5.4.1",
-    "@mui/styled-engine": "5.4.1",
-    "@react-jvectormap/core": "1.0.1",
-    "@react-jvectormap/world": "1.0.0",
-    "@testing-library/jest-dom": "5.16.2",
-    "@testing-library/react": "12.1.2",
-    "@testing-library/user-event": "13.5.0",
-    "axios": "^1.4.0",
-    "chart.js": "3.4.1",
-    "chroma-js": "2.4.2",
-    "dropzone": "5.9.2",
-    "firebase": "^9.19.1",
-    "flatpickr": "4.6.9",
-    "formik": "2.2.9",
-    "html-react-parser": "1.4.8",
-    "prop-types": "15.8.1",
-    "react": "17.0.2",
-    "react-chartjs-2": "3.0.4",
-    "react-dom": "17.0.2",
-    "react-flatpickr": "3.10.7",
-    "react-github-btn": "1.2.1",
-    "react-images-viewer": "1.7.1",
-    "react-quill": "1.3.5",
-    "react-router-dom": "6.2.1",
-    "react-scripts": "5.0.0",
-    "react-table": "7.7.0",
-    "redux-thunk": "^2.4.2",
-    "stylis": "4.0.13",
-    "stylis-plugin-rtl": "2.1.1",
-    "uuid": "8.3.2",
-    "web-vitals": "2.1.4",
-    "yup": "0.32.11"
+  "proxy": "http://localhost:4000",
+  "author": {
+    "name": "Ibrahim",
+    "email": "ikholil.bd@gmail.com",
+    "url": "https://ibrahimk.netlify.app"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@tabler/icons-react": "^2.39.0",
+    "@types/react-beautiful-dnd": "^13.1.7",
+    "@types/react-modal-video": "^1.2.3",
+    "@types/react-transition-group": "^4.4.9",
+    "apexcharts": "^3.44.0",
+    "axios": "^1.6.5",
+    "generate-password": "^1.7.1",
+    "jsvectormap": "^1.5.3",
+    "mui": "^0.0.1",
+    "next": "^14.0.4",
+    "next-themes": "^0.2.1",
+    "nextjs13-progress": "^1.1.45",
+    "react": "^18",
+    "react-animate-height": "^3.2.2",
+    "react-apexcharts": "^1.4.1",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-calendar": "^4.6.1",
+    "react-countup": "^6.5.0",
+    "react-dom": "^18",
+    "react-hook-form": "^7.49.3",
+    "react-modal-video": "^2.0.1",
+    "react-otp-input": "^3.1.0",
+    "react-parallax-tilt": "^1.7.175",
+    "react-quill": "^2.0.0",
+    "react-range-slider-input": "^3.0.7",
+    "react-to-print": "^2.14.15",
+    "react-toastify": "^9.1.3",
+    "react-tooltip": "^5.22.0",
+    "react-transition-group": "^4.4.5",
+    "sharp": "^0.32.6",
+    "sweetalert2": "^11.6.13",
+    "swiper": "^11.0.3",
+    "swr": "^2.2.4",
+    "tailwind-merge": "^2.2.0",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
-    "eslint": "^8.38.0",
-    "eslint-config-airbnb": "19.0.4",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-import": "2.25.4",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "7.28.0",
-    "eslint-plugin-react-hooks": "4.3.0",
-    "prettier": "2.5.1"
-  },
-  "proxy": "http://localhost:4000"
+    "@faker-js/faker": "^8.3.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.6",
+    "postcss": "^8",
+    "sass": "^1.69.5",
+    "tailwindcss": "^3",
+    "typescript": "^5"
+  }
 }

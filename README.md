@@ -1,54 +1,36 @@
-## 概要
-このプロジェクトは、学生が管理することを主体においた、大学生活をより豊かで効率的にするソーシャルプラットフォームである。
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-あえて教員や機関の管理から外れることによって、自由度の高い発想や表現を保護し、他の学生や教員と柔軟なコミュニティーを形成することを可能とすることが目的である。
+## Getting Started
 
-すなわち、Learning Management System（学習管理システム）ならぬLearning Network System（学習ネットワークシステム）である。
+First, run the development server:
 
-## 要件一覧
-１．すべてのユーザーは基本的に匿名及び実名を意図的に選択できる
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-２．すべてのユーザーは学年、クラスや専攻など、自分自身の所属を証明する手段を持つ
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-３．特定のドメインの人間しか登録することは不可能
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-４．ユーザーはそれぞれ６段階の認証レベルが振り分けられており、デフォルトは、
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-* ゲスト：０ 
+## Learn More
 
-* 学校関連者：１ 
+To learn more about Next.js, take a look at the following resources:
 
-* 学生：２ 
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-とする。
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-５．3~5以上になると、
+## Deploy on Vercel
 
-* ３以上：クラスのメンバーや、時間割を編集する権限 
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-* ４以上：時間割に利用する科目を編集する権限 ３人まで他のユーザーを認証レベル３として保証することができる。
-
-* ５以上：管理者と同等の権限を持つ 悪質なユーザーのBANや、匿名の剥奪をする権利 ３人まで他のユーザーを認証レベル４として保証することができる。
-
-    
-というようにアクセスできる領域が増える。
-
-６．どの学生がどのクラスにいるなどの情報は、必ず１以上のユーザーしかアクセスできない。
-
-７．基本的なレイアウトはダッシュボード形式になっており、その内容は学生やそのコミュニティーが作成し、管理者が承諾したらマージする。
-
-８．初期で入っているのはデータベース管理のフォームと、時間割・イベント・自習 談話室を確認できるダッシュボードと、SNSには必ずあると言っていいPostやプロフィールなどの機能と、VOSの代替となり得る存在、落とし物用の掲示板である。
-
-   これらはslack等で事足りるものであるが、重要なのはこれらの情報がデータベースの情報をもとに、能動的に情報が整理され、かつ学生側がそれらに自由にアクセスできることにある。
-   
-## 技術選定
-### フロントエンド
-React.js Material UI
-
-### バックエンド 
-Node.js Express MongoDB
-
-### インフラ
-Ubuntu Server 22.04
-データベースサーバーのみAWS Atlasで管理する
-
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
