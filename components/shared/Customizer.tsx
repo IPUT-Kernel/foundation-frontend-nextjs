@@ -3,7 +3,6 @@ import cn from "@/utils/cn";
 import { IconX } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { Dispatch, SetStateAction } from "react";
-import { layoutList } from "../navbar/SelectLayout";
 const directions = ["ltr", "rtl"];
 const moods = ["light", "dark", "system"];
 type customizerTypes = {
@@ -83,25 +82,6 @@ const Customizer = ({ customizerOpen, setCustomizerOpen }: customizerTypes) => {
           </div>
 
           <h6 className="h6 mb-3">Sidebar</h6>
-          <div className="flex gap-x-5 gap-y-3 flex-wrap">
-            {layoutList.map((singleLayout) => (
-              <div key={singleLayout} className="flex items-center">
-                <input
-                  onChange={() => changeLayout(singleLayout)}
-                  className="relative h-5 w-5 cursor-pointer appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] "
-                  type="radio"
-                  name="layout"
-                  checked={layout == singleLayout}
-                  id={singleLayout}
-                />
-                <label
-                  className="inline-block hover:cursor-pointer ltr:pl-2 rtl:pr-2 capitalize"
-                  htmlFor={singleLayout}>
-                  {singleLayout}
-                </label>
-              </div>
-            ))}
-          </div>
         </div>
       </aside>
     </div>

@@ -4,9 +4,7 @@
   "private": true,
   "proxy": "http://localhost:4000",
   "author": {
-    "name": "Ibrahim",
-    "email": "ikholil.bd@gmail.com",
-    "url": "https://ibrahimk.netlify.app"
+    "name": "bitcat"
   },
   "scripts": {
     "dev": "next dev",

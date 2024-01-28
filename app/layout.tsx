@@ -12,9 +12,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Dashboi - Multipurpose Nextjs Tailwindcss admin Dashboard",
-  description: "Dashboi - Multipurpose Nextjs Tailwindcss admin Dashboard",
-  keywords: ["Next.js", "React", "JavaScript", "Dashboard"],
+  title: "IPUT-Kernel",
+  description: "IPUTのすべての開発者のためのソーシャルプラットフォームです。",
+  keywords: ["東京国際工科専門職大学", "Github", "LMS", "IPUT"],
+  openGraph: {
+    title: "IPUT-Kernel",
+    description: "IPUTのすべての開発者のためのソーシャルプラットフォームです。",
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang="ja" className="!scroll-smooth">
       <body className={`${inter.className} text-n500 dark:text-n30`}>
         <ThemeProvider>
           <Next13NProgress color="#5D69F4" height={3} />

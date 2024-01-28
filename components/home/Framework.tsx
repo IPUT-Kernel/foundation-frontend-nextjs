@@ -7,36 +7,33 @@ import Tilt from "react-parallax-tilt";
 const appsetupData = [
   {
     title: "NextJS",
-    desc: "Nextjs is an open source framework that makes web development intuitive and powerful.",
+    desc: "大規模開発に特化したフレームワーク 最新のルーティング App routerを採用 ",
     img: nextjs,
   },
   {
     title: "Tailwind CSS",
-    desc: "Tailwind CSS is a utility-first CSS framework for rapidly building modern websites",
+    desc: "ユーティリティファーストのCSSフレームワーク",
     img: tailwind,
   },
   {
     title: "Typescript",
-    desc: "TypeScript extends JavaScript by adding types to the language. TypeScript speeds up.",
+    desc: "バックエンド・フロントエンドともにTypescriptで実装",
     img: typescript,
   },
 ];
 
-const AppSetup = () => {
+const Framework = () => {
   return (
     <section className="py-14 xxl:py-28 bg-n0 dark:bg-bg4">
       <div className="container">
         <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-          <h5 className="h5 text-primary font-semibold mb-2 lg:mb-4">
-            Next App Setup
-          </h5>
           <h2 className="h2 mb-4 lg:mb-6">
-            An advanced Nextjs and Tailwind CSS app setup
+            最先端のフレームワークを使用
           </h2>
-          <p className="text-sm md:text-base">
-            Dashboi is a powerful Nextjs app starter with a powerful and
-            extensible codebase. It comes with everything you need to create a
-            professional{" "}
+          <p className="text-sx md:text-base">
+            IPUT-Kernelは当プロジェクト自体を教材としても使えるよう
+            最新のフレームワークで実装されています。
+            {" "}
           </p>
         </div>
         <div className="grid grid-cols-12 gap-4 xl:gap-6">
@@ -49,7 +46,7 @@ const AppSetup = () => {
                   <Image width={48} height={48} src={img} alt="icon" />
                 </div>
                 <h4 className="h4 mb-4">{title}</h4>
-                <p className="text-sm">{desc}</p>
+                <p className="text-sx">{desc}</p>
               </div>
             </Tilt>
           ))}
@@ -59,4 +56,4 @@ const AppSetup = () => {
   );
 };
 
-export default AppSetup;
+export default Framework;

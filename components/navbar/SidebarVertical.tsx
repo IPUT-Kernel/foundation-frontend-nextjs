@@ -71,13 +71,16 @@ const SidebarVertical = ({
       ref={sidebarRef}>
       <div className={`p-4 xxl:p-6 xxxl:p-[30px]`}>
         <div className="flex justify-between items-center">
-          <Link href="/">
+          <Link href="/" className="flex items-center gap-4">
             <Image
-              width={174}
-              height={38}
-              src="/images/logo-with-text.png"
+              width={50}
+              height={50}
+              src="/images/logoIcon.png"
               alt="logo"
             />
+            <h1 className="text-xl">
+              IPUT-Kernel
+            </h1>
           </Link>
           <button onClick={() => setSidebar(false)} className="xxl:hidden">
             <IconX />

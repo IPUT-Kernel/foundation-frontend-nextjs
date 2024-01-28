@@ -1,14 +1,14 @@
 "use client";
 import { IconArrowLeft, IconEye, IconEyeOff } from "@tabler/icons-react";
-import Image from "next/image";
 import Link from "next/link";
 
 import axios from 'axios';
-import { useAuthStore } from '@/store/authStore';
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import Alert from '@mui/material/Alert';
+import { useAuthStore } from '@/store/authStore';
+
+import Alert from '@mui/material/Alert';  
 
 type Input = {
   email: string;
@@ -17,10 +17,17 @@ type Input = {
 
 const LoginOneContent = () => {
 
-  const [alert, setAlert] = useState({ open: false, message: '', severity: 'success' });
+  const [alert, setAlert] = useState<{ 
+    open: boolean,
+    message: string,
+    severity?: 'error' | 'info' | 'success' | 'warning' 
+  }>({ 
+    open: false,
+    message: '', 
+    severity: 'success' });
 
   const [showPass, setShowPass] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {register, handleSubmit, formState: { errors } } = useForm<Input>();
 
   const login = useAuthStore((state) => state.login)
 
@@ -29,22 +36,26 @@ const LoginOneContent = () => {
       const response = await axios.post('http://localhost:4000/v1/auth/login', data);
       if (response.data && response.data.user && response.data.token) {
         login(response.data.user, response.data.token);
-        console.log(useAuthStore.getState()); // ストアの状態をコンソールに出力
+        console.log(useAuthStore.getState());
         setAlert({ open: true, message: 'ログインに成功しました。', severity: 'success' });
       } else {
         setAlert({ open: true, message: 'ログインに失敗しました。', severity: 'error' });
       }
     } catch (error: any) {
-      console.error(error); // エラーをコンソールに出力
-      setAlert({ open: true, message: error.response?.data || '不明なエラー', severity: 'error' });
+      console.error(error);
+      setAlert({ 
+        open: true,
+        message: error.response?.data || '不明なエラー',
+        severity: 'error' 
+      });
     }
   };
 
 
   return (
     <div>
-      {alert.open && <Alert className="m-4 mx-5 md:mx-10 xl:mx-20 xxl:mx-28" severity={alert.severity}>{alert.message}</Alert>}
-      <div className="min-h-screen  relative lg:after:absolute py-10 lg:py-20 after:h-full lg:after:bg-primary/5 lg:dark:after:bg-bg3 ltr:after:right-0 rtl:after:left-0 after:top-0">
+      { alert.open && <Alert className="m-4 mx-5 md:mx-10 xl:mx-20 xxl:mx-28" severity={alert.severity}>{alert.message}</Alert> }
+      <div className="min-h-screen relative lg:after:absolute py-10 lg:py-20 after:h-full lg:after:bg-primary/5 lg:dark:after:bg-bg3 ltr:after:right-0 rtl:after:left-0 after:top-0">
         <div className=" flex items-center justify-center px-5 md:px-10 xl:px-20 xxl:px-28">
           <div className="box w-full p-3 md:p-4 xl:p-6 items-center max-w-[805px]">
             <form className="box bg-primary/5 dark:bg-bg3 lg:p-6 xl:p-8" onSubmit={handleSubmit(onSubmit)}>
@@ -104,7 +115,6 @@ const LoginOneContent = () => {
             </form>
           </div>
         </div>
-
       </div>
     </div>
   );

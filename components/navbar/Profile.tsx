@@ -21,11 +21,6 @@ const profileLinks = [
     title: "Meassages",
   },
   {
-    icon: <IconLifebuoy size={18} />,
-    url: "#",
-    title: "Help",
-  },
-  {
     icon: <IconSettings size={18} />,
     url: "/settings",
     title: "Settings",

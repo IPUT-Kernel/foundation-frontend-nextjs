@@ -4,11 +4,10 @@ import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 import HorizontalLayout from "./HorizontalLayout";
 import ModeSwitcher from "./ModeSwitcher";
-import Notification from "./Notification";
 import Profile from "./Profile";
 import Search from "./Search";
-import SelectLayout from "./SelectLayout";
-import SwitchLanguage from "./SwitchLanguage";
+
+import logoIcon from "@/public/images/logoicon.png";
 
 const TopNavHorizontal = ({
   setSidebar,
@@ -26,7 +25,7 @@ const TopNavHorizontal = ({
             <Image
               width={174}
               height={38}
-              src="/images/logo-with-text.png"
+              src="/images/logoicon.png"
               alt="logo"
               className="hidden lg:block"
             />
@@ -36,11 +35,8 @@ const TopNavHorizontal = ({
           </button>
         </div>
         <div className="flex items-center gap-3 sm:gap-4 xxl:gap-6">
-          <SelectLayout isWhite={true} />
           <Search />
           <ModeSwitcher isWhite={true} />
-          <Notification isWhite={true} />
-          <SwitchLanguage isWhite={true} />
           <Profile />
         </div>
       </div>

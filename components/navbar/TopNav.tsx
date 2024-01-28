@@ -2,10 +2,7 @@ import { useLayout } from "@/utils/LayoutContext";
 import { IconMenu2, IconSearch } from "@tabler/icons-react";
 import { Dispatch, SetStateAction } from "react";
 import ModeSwitcher from "./ModeSwitcher";
-import Notification from "./Notification";
 import Profile from "./Profile";
-import SelectLayout from "./SelectLayout";
-import SwitchLanguage from "./SwitchLanguage";
 
 const TopNav = ({
   setSidebar,
@@ -46,12 +43,9 @@ const TopNav = ({
             <IconSearch />
           </button>
         </form>
-        <SelectLayout />
       </div>
       <div className="flex items-center gap-3 sm:gap-4 xxl:gap-6">
         <ModeSwitcher />
-        <Notification />
-        <SwitchLanguage />
         <Profile />
       </div>
     </nav>

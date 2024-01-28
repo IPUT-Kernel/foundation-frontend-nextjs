@@ -1,4 +1,4 @@
-import AppSetup from "@/components/home/AppSetup";
+import Framework from "@/components/home/Framework";
 import DevFriendly from "@/components/home/DevFriendly";
 import FaQs from "@/components/home/Faqs";
 import Footer from "@/components/home/Footer";
@@ -15,9 +15,16 @@ const HomePage = () => {
   return (
     <main>
       <Hero />
-      <AppSetup />
+      <Framework />
       <SmartUi />
-      <PrebuiltPages sliceNum={12} />
+
+      {
+      /*
+      project紹介用に使えるかも
+      <PrebuiltPages sliceNum={12} /> 
+      */
+      }
+
       <ForDev />
       <MultipleLayout />
       <DevFriendly />

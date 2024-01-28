@@ -8,7 +8,6 @@ import Customizer from "@/components/shared/Customizer";
 import Footer from "@/components/shared/Footer";
 import { useLayout } from "@/utils/LayoutContext";
 import useWindowSize from "@/utils/useWindowSize";
-import { IconSettings } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 
 export default function RootLayout({
@@ -19,7 +18,6 @@ export default function RootLayout({
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { layout } = useLayout();
   const { windowSize } = useWindowSize();
-  const [customizerOpen, setCustomizerOpen] = useState(false);
   useEffect(() => {
     if (window.innerWidth > 1400) {
       setSidebarIsOpen(true);
@@ -105,19 +103,6 @@ export default function RootLayout({
         </div>
         <Footer />
       </div>
-
-      {/* Theme Customizer */}
-
-      <button
-        onClick={() => setCustomizerOpen(true)}
-        className="fixed ltr:right-4 rtl:left-4 z-50 top-1/2 bg-primary text-n0 w-10 h-10 rounded-full flex items-center justify-center">
-        <IconSettings className="animate-spin-slow" />
-      </button>
-
-      <Customizer
-        setCustomizerOpen={setCustomizerOpen}
-        customizerOpen={customizerOpen}
-      />
     </>
   );
 }

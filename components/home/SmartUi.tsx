@@ -35,10 +35,7 @@ const SmartUi = () => {
     <section className="py-14 xxl:py-28 bg-primary/5 bg-[url(/images/home/smartui-bg.png)] bg-cover relative">
       <div className="container grid grid-cols-2 gap-4 xl:gap-6">
         <div className="col-span-2 lg:col-span-1">
-          <h5 className="h5 text-primary font-semibold mb-2 lg:mb-4">
-            Ui Library
-          </h5>
-          <h2 className="h2 mb-4 lg:mb-6">Smart UI Design</h2>
+          <h2 className="h2 mb-4 lg:mb-6">大学生活をよりスマートに</h2>
           <p className="mb-10 lg:mb-14 text-sm md:text-base">
             Dashboi UI provides a complete set of Nextjs components and
             utilities such as buttons, form elements, badges, tabs and
