@@ -1,6 +1,6 @@
 "use client";
-import logo from "@/public/images/logo-with-text.png";
 import logoIcon from "@/public/images/logoicon.png";
+import logoIconDark from "@/public/images/logoicondark.png";
 import { IconArrowUpRight, IconMenu2, IconSearch } from "@tabler/icons-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { ChangeEvent, useLayoutEffect, useRef, useState } from "react";
 import ModeSwitcher from "../navbar/ModeSwitcher";
 import { demoData } from "./demodata";
+import { useTheme } from "next-themes";
 type ResultType = {
   id: number;
   title: string;
@@ -17,6 +18,7 @@ type ResultType = {
   url: string;
 };
 const Navbar = () => {
+  const { theme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchResult, setSearchResult] = useState<ResultType[]>([]);
@@ -60,8 +62,7 @@ const Navbar = () => {
     }
     const result = demoData.filter(
       ({ title, desc }) =>
-        title.toLowerCase().includes(searchTerm) ||
-        desc.toLowerCase().includes(searchTerm)
+        title.toLowerCase().includes(searchTerm) || desc.toLowerCase().includes(searchTerm)
     );
     setSearchResult(result);
     console.log(searchResult);
@@ -71,37 +72,38 @@ const Navbar = () => {
     <div
       className={`fixed top-0 w-full max-lg:bg-n0 dark:max-lg:bg-bg4 max-lg:shadow-lg z-10 ${
         scrolled && "bg-n0 dark:bg-bg3 shadow-lg"
-      }`}>
+      }`}
+    >
       <nav
         className={`container top-0 flex duration-500 justify-between items-center gap-2 py-3 md:py-4 lg:py-6 xxl:py-8 ${
           scrolled && "lg:py-4 xxl:!py-5"
-        }`}>
+        }`}
+      >
         <div className="flex items-center gap-2 sm:gap-4 xl:gap-6">
           <Link href="/" className="shrink-0">
             <div className="flex items-center gap-3">
-            <Image
-              width={50}
-              height={38}
-              src={logoIcon}
-              className="max-xxl:hidden"
-              alt="logo"
-            />
-            
-            <h1>IPUT-Kernel</h1>
+              <Image
+                width={50}
+                height={38}
+                src={theme == "dark" ? logoIconDark : logoIcon}
+                className="max-xxl:hidden"
+                alt="logo"
+              />
+
+              <h1>IPUT-Kernel</h1>
             </div>
             <Image src={logoIcon} width={50} className="xxl:hidden" alt="logo" />
           </Link>
         </div>
 
-        
         <div className="flex items-center gap-4">
-
           <ul
             className={`lg:flex z-20 items-center gap-6 absolute top-full lg:static ${
               menuOpen
                 ? "bg-n0 dark:bg-bg4 w-full left-0 right-0 p-4 flex text-start translate-x-0 justify-start max-lg:flex-col"
                 : "max-lg:hidden max-lg:-translate-x-full"
-            }`}>
+            }`}
+          >
             <li>
               <Link href="#pages">Prebuilt Pages</Link>
             </li>

@@ -14,6 +14,16 @@ import {
   IconSettingsBolt,
   IconUserShield,
 } from "@tabler/icons-react";
+
+import Profile from "@/components/navbar/Profile";
+import { Noto_Serif_JP } from "next/font/google";
+
+const notojp = Noto_Serif_JP({
+  weight: "700",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const sidebarData = [
   {
     id: 1,
@@ -21,8 +31,8 @@ export const sidebarData = [
     items: [
       {
         id: 1,
-        name: "Personal",
-        icon: <IconHome2 className="w-5 h-5 lg:w-6 lg:h-6" />,
+        name: <p className={`${notojp.className} text-xm`}>bitcat</p>,
+        icon: <Profile />,
         submenus: [
           { title: "Personal Style 01", url: "/dashboards/personal-1" },
           { title: "Class", url: "/dashboards/personal-2" },

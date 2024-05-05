@@ -10,11 +10,7 @@ import { useLayout } from "@/utils/LayoutContext";
 import useWindowSize from "@/utils/useWindowSize";
 import { useEffect, useState } from "react";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { layout } = useLayout();
   const { windowSize } = useWindowSize();
@@ -43,10 +39,7 @@ export default function RootLayout({
     <>
       {/* Navbar top  */}
       {layout == "Horizontal" && windowSize! > 1400 && (
-        <TopNavHorizontal
-          setSidebar={setSidebarIsOpen}
-          sidebarIsOpen={sidebarIsOpen}
-        />
+        <TopNavHorizontal setSidebar={setSidebarIsOpen} sidebarIsOpen={sidebarIsOpen} />
       )}
       {layout == "Horizontal" && windowSize! < 1400 && (
         <TopNav setSidebar={setSidebarIsOpen} sidebarIsOpen={sidebarIsOpen} />
@@ -57,28 +50,16 @@ export default function RootLayout({
 
       {/* Sidebar */}
       {layout == "Vertical" && (
-        <SidebarVertical
-          sidebarIsOpen={sidebarIsOpen}
-          setSidebar={setSidebarIsOpen}
-        />
+        <SidebarVertical sidebarIsOpen={sidebarIsOpen} setSidebar={setSidebarIsOpen} />
       )}
       {layout == "Horizontal" && windowSize! < 1400 && (
-        <SidebarVertical
-          sidebarIsOpen={sidebarIsOpen}
-          setSidebar={setSidebarIsOpen}
-        />
+        <SidebarVertical sidebarIsOpen={sidebarIsOpen} setSidebar={setSidebarIsOpen} />
       )}
       {layout == "Two Column" && (
-        <SidebarTwoColumn
-          sidebarIsOpen={sidebarIsOpen}
-          setSidebar={setSidebarIsOpen}
-        />
+        <SidebarTwoColumn sidebarIsOpen={sidebarIsOpen} setSidebar={setSidebarIsOpen} />
       )}
       {layout == "Hovered" && (
-        <SidebarHovered
-          sidebarIsOpen={sidebarIsOpen}
-          setSidebar={setSidebarIsOpen}
-        />
+        <SidebarHovered sidebarIsOpen={sidebarIsOpen} setSidebar={setSidebarIsOpen} />
       )}
       {/* {layout == "Horizontal" && <HorizontalLayout />} */}
 
@@ -94,11 +75,13 @@ export default function RootLayout({
           "ltr:xxl:ml-[280px] ltr:xxxl:ml-[360px] rtl:xxl:mr-[280px] rtl:xxxl:mr-[360px]"
         } ${
           sidebarIsOpen && layout == "Hovered" && "ltr:xxl:ml-20 rtl:xxl:mr-20"
-        } ${layout == "Horizontal" && windowSize! > 1400 && "!pt-[172px]"}`}>
+        } ${layout == "Horizontal" && windowSize! > 1400 && "!pt-[172px]"}`}
+      >
         <div
           className={`px-3 sm:px-4 xxxl:px-6 py-6 lg:py-8 duration-300 ${
             layout == "Horizontal" && "max-w-[1700px] mx-auto xxl:px-3"
-          }`}>
+          }`}
+        >
           {children}
         </div>
         <Footer />

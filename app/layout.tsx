@@ -2,14 +2,10 @@ import "@/public/styles/style.scss";
 import { LayoutProvider } from "@/utils/LayoutContext";
 import ThemeProvider from "@/utils/ThemeProvider";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Next13NProgress } from "nextjs13-progress";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+import { notojp, ubuntumono, inter } from "@/utils/fonts";
 
 export const metadata: Metadata = {
   title: "IPUT-Kernel",
@@ -21,11 +17,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" className="!scroll-smooth">
       <body className={`${inter.className} text-n500 dark:text-n30`}>

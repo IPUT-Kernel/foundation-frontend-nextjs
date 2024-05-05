@@ -26,23 +26,12 @@ const TopNav = ({
         sidebarIsOpen && layout == "Hovered"
           ? "w-full xxl:w-[calc(100%-80px)] ltr:xxl:ml-[80px] rtl:xxl:mr-[80px] "
           : "w-full"
-      }  md:py-4 xxl:py-6 gap-3 bg-n0 dark:bg-bg4 fixed flex justify-between items-center`}>
+      }  md:py-4 xxl:py-6 gap-3 bg-n0 dark:bg-bg4 fixed flex justify-between items-center`}
+    >
       <div className="flex grow md:gap-4 xxl:gap-6 items-center">
         <button onClick={() => setSidebar(!sidebarIsOpen)}>
           <IconMenu2 />
         </button>
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="bg-primary/5 dark:bg-bg3 hidden md:flex gap-3 rounded-[30px] border border-transparent focus-within:border-primary px-6 xxl:px-8 items-center justify-between max-w-[493px] w-full">
-          <input
-            type="text"
-            placeholder="Search"
-            className="bg-transparent py-2 md:py-2.5 xxl:py-3 focus:outline-none w-full"
-          />
-          <button>
-            <IconSearch />
-          </button>
-        </form>
       </div>
       <div className="flex items-center gap-3 sm:gap-4 xxl:gap-6">
         <ModeSwitcher />
