@@ -4,7 +4,6 @@ import {
   IconGrid4x4,
   IconGridGoldenratio,
   IconHeartHandshake,
-  IconHome2,
   IconHourglassEmpty,
   IconLayoutGrid,
   IconLayoutList,
@@ -34,8 +33,9 @@ export const sidebarData = [
         name: <p className={`${notojp.className} text-xm`}>bitcat</p>,
         icon: <Profile />,
         submenus: [
-          { title: "Personal Style 01", url: "/dashboards/personal-1" },
-          { title: "Class", url: "/dashboards/personal-2" },
+          { title: "ダッシュボード", url: "/dashboards/personal-1" },
+          { title: "クラス", url: "/dashboards/personal-2" },
+          { title: "プロフィール", url: "/profile" },
         ],
       },
     ],
@@ -166,7 +166,6 @@ export const sidebarData = [
         name: "Subpages",
         icon: <IconFileImport className="w-5 h-5 lg:w-6 lg:h-6" />,
         submenus: [
-          { title: "Profile", url: "/profile" },
           { title: "Edit Profile", url: "/edit-profile" },
           { title: "Notifications", url: "/notifications" },
           { title: "Settings", url: "/settings" },
