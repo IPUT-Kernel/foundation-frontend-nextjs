@@ -72,29 +72,28 @@ const LoginOneContent = () => {
               <Link href="/dashboards/personal-1" className="flex items-center gap-2">
                 <IconArrowLeft size={20} /> ホームへ戻る
               </Link>
-              <h3 className="h3 my-4">Welcome Back!</h3>
+              <h3 className="h3 my-4">ログイン</h3>
               <p className="md:mb-6 md:pb-6 mb-4 pb-4 bb-dashed text-sm md:text-base">
-                Sign in to your account and join us
+                アクセスにはログインが必要なページです
               </p>
               <label htmlFor="email" className="md:text-lg font-medium block mb-4">
-                Enter Your Email ID
+                Email ID
               </label>
               <input
                 {...register("email", { required: true })}
                 type="email"
                 className="w-full text-sm focus:outline-none bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3 mb-5"
-                placeholder="Enter Your Email"
+                placeholder="******.iput.ac.jp"
                 id="email"
               />
               <label htmlFor="password" className="md:text-lg font-medium block mb-4">
-                Enter Your Password
+                Password
               </label>
               <div className=" bg-n0 dark:bg-bg4 border border-n30 dark:border-n500 rounded-3xl px-3 md:px-6 py-2 md:py-3 mb-4 relative">
                 <input
                   {...register("password", { required: true })}
                   type={showPass ? "text" : "password"}
                   className="w-11/12 text-sm focus:outline-none bg-transparent"
-                  placeholder="Enter Your Password"
                   id="password"
                 />
                 <span
