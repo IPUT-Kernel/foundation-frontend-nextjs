@@ -10,7 +10,7 @@ const CommonLecture = () => {
           <table className="min-w-full divide-y divide-gray-200 border border-gray-800 dark:border-gray-200">
             <thead className="bg-gray-50 dark:bg-bg4">
               <tr>
-                <th className="px-1 py-1 w-[80px] text-center text-xl font-medium text-gray-500 dark:text-n10 uppercase tracking-wider border border-gray-800 dark:border-gray-200">
+                <th className="py-1 w-[50px] text-center text-xl font-medium text-gray-500 dark:text-n10 uppercase tracking-wider border border-gray-800 dark:border-gray-200">
                   時限
                 </th>
                 {days.map((day) => (
@@ -29,7 +29,7 @@ const CommonLecture = () => {
                 <>
                   <tr key={`main-${rowIndex}`}>
                     <td
-                      className="px-1 py-4 whitespace-nowrap text-xl text-center font-medium  text-gray-800 dark:text-gray-200 border border-gray-800 dark:border-gray-200"
+                      className="py-4 whitespace-nowrap text-xl text-center font-medium  text-gray-800 dark:text-gray-200 border border-gray-800 dark:border-gray-200"
                       rowSpan={2}
                     >
                       {timeSlot}
@@ -38,9 +38,11 @@ const CommonLecture = () => {
                       <td
                         key={`${rowIndex}-${colIndex}`}
                         colSpan={2}
-                        className="px-6 py-4 h-[70px] whitespace-nowrap text-sm font-medium text-gray-900 border border-gray-800 dark:border-gray-200"
+                        className="px-6 py-4 h-[70px] whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-200 border border-gray-800 dark:border-gray-200"
                       >
-                        <div className="h-[60%] flex items-center justify-center">授業名</div>
+                        <div className="h-[60%] flex items-center text-sm text-gray-900 dark:text-gray-200 justify-center">
+                          英語コミュニケーションIIa
+                        </div>
                       </td>
                     ))}
                   </tr>
@@ -49,13 +51,13 @@ const CommonLecture = () => {
                       <>
                         <td
                           key={`room-${rowIndex}-${colIndex}`}
-                          className="px-1 py-1 whitespace-nowrap text-xs font-medium text-center text-gray-900 border border-gray-800 dark:border-gray-200"
+                          className="px-1 py-1 whitespace-nowrap text-xs font-medium text-center text-gray-900 dark:text-gray-200 border border-gray-800 dark:border-gray-200"
                         >
                           教室番号
                         </td>
                         <td
                           key={`teacher-${rowIndex}-${colIndex}`}
-                          className="px-1 py-1 whitespace-nowrap text-xs font-medium text-center text-gray-900 border border-gray-800 dark:border-gray-200"
+                          className="px-1 py-1 whitespace-nowrap text-xs font-medium text-center text-gray-900 dark:text-gray-200 border border-gray-800 dark:border-gray-200"
                         >
                           教員名
                         </td>
